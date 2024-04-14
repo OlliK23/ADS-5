@@ -3,12 +3,12 @@
 #define INCLUDE_TSTACK_H_
 
 template <typename T, int size>
-class TStack {
+class Stack {
 private:
 	T* arr = nullptr;
 	int top;
 public:
-	TStack() : top(-1) {
+	Stack() : top(-1) {
 		arr = new T[size];
 	}
 	T get() {
