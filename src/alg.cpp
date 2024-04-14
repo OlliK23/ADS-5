@@ -1,7 +1,7 @@
 // Copyright 2021 NNTU-CS
-#include <string>
 #include <alg.h>
 #include "tstack.h"
+#include <string>
 int priority(char ch) {
     if (ch == '*' || ch == '/') {
         return 2;
@@ -18,9 +18,15 @@ bool isOperator(char x) {
 
 std::string infx2pstfx(std::string inf) {
     std::string postfix;
+    int count = 0;
     Stack<char, 100> stack;
     for (int i = 0; i < inf.length(); i++) {
         if (isdigit(inf[i])) {
+            count++;
+            if (count == 1) {
+                postfix += inf[i];
+                continue;
+            }
             postfix = postfix + ' ' + inf[i];
         } else if (isOperator(inf[i])) {
             if (inf[i] == '(') {
