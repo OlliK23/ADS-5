@@ -4,10 +4,10 @@
 
 template <typename T, int size>
 class Stack {
-private:
+ private:
     T* arr = nullptr;
     int top;
-public:
+ public:
     Stack() : top(-1) {
         arr = new T[size];
     }
