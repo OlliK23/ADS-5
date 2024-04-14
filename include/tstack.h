@@ -9,20 +9,20 @@ private:
     int top;
 public:
     Stack() : top(-1) {
-	arr = new T[size];
+        arr = new T[size];
     }
     T get() {
-	return arr[top];
+        return arr[top];
     }
     void pop() {
-	if (top >= 0) {
-		top--;
-	}
+        if (top >= 0) {
+            top--;
+        }
     }
     void push(T s) {
-	if (top < size - 1) {
-		arr[++top] = s;
-	}
+        if (top < size - 1) {
+            arr[++top] = s;
+        }
     }
     bool isEmpty() {
         return top == -1;
