@@ -26,20 +26,20 @@ std::string infixToPostfix(std::string inf) {
         } else if (isOperator(inf[i])) {
             if (inf[i] == '(') {
                 stack.push(inf[i]);
-            } else if (stack.isempty()) {
+            } else if (stack.isEmpty()) {
                 stack.push(inf[i]);
             } else if (stack.get() == '(') {
                 stack.push(inf[i]);
             } else if (priority(inf[i]) > priority(stack.get())) {
                 stack.push(inf[i]);
             } else if (inf[i] == ')') {
-                while (!stack.isempty() && stack.get() != '(') {
+                while (!stack.isEmpty() && stack.get() != '(') {
                     postfix = postfix + ' ' + stack.get();
                     stack.pop();
                 }
                 stack.pop();
             } else {
-                while (!stack.isempty()) {
+                while (!stack.isEmpty()) {
                     postfix = postfix + ' ' + stack.get();
                     stack.pop();
                 }
@@ -47,7 +47,7 @@ std::string infixToPostfix(std::string inf) {
             }
         }
     }
-    while (!stack.isempty()) {
+    while (!stack.isEmpty()) {
         postfix = postfix + ' ' + stack.get();
         stack.pop();
     }
