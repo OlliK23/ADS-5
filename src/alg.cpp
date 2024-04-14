@@ -1,7 +1,7 @@
 // Copyright 2021 NNTU-CS
-#include <alg.h>
-#include "tstack.h"
 #include <string>
+#include <map>
+#include "tstack.h"
 int priority(char ch) {
     if (ch == '*' || ch == '/') {
         return 2;
