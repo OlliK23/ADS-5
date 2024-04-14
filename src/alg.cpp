@@ -1,6 +1,6 @@
 // Copyright 2021 NNTU-CS
 #include <string>
-#include <cctype>
+#include <ctype.h>
 #include <map>
 #include "tstack.h"
 int priority(char ch) {
