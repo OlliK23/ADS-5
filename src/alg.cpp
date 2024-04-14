@@ -23,19 +23,19 @@ std::string infx2pstfx(std::string inf) {
     for (int i = 0; i < inf.length(); i++) {
         if (isdigit(inf[i])) {
             postfix += inf[i];
-        }else if (isOperator(inf[i])) {
+        } else if (isOperator(inf[i])) {
             if (inf[i] == '(') {
                 stack.push(inf[i]);
-            }else if (stack.isEmpty() || stack.get() == '(' || priority(inf[i]) > priority(stack.get())) {
+            } else if (stack.isEmpty() || stack.get() == '(' || priority(inf[i]) > priority(stack.get())) {
                 stack.push(inf[i]);
-            }else if (inf[i] == ')') {
+            } else if (inf[i] == ')') {
                 while (!stack.isEmpty() && stack.get() != '(') {
                     postfix += ' ';
                     postfix += stack.get();
                     stack.pop();
                 }
                 stack.pop();
-            }else {
+            } else {
                 while (!stack.isEmpty() && priority(inf[i]) <= priority(stack.get())) {
                     postfix += ' ';
                     postfix += stack.get();
@@ -67,24 +67,23 @@ int eval(std::string pref) {
         int num = number[i];
         if (isdigit(num)) {
             stack.push(num -'0');
-        }else if (isOperator(number[i])) {
+        } else if (isOperator(number[i])) {
             int n1 = stack.get();
             stack.pop();
             int n2 = stack.get();
             stack.pop();
             if (num == '+') {
                 stack.push(n1 + n2);
-            }else if (num == '-') {
+            } else if (num == '-') {
                 stack.push(n2 - n1);
-            }else if (num == '*') {
+            } else if (num == '*') {
                 stack.push(n1 * n2);
-            }else if (num == '/') {
+            } else if (num == '/') {
                 stack.push(n2 / n1);
-            }else {
+            } else {
                 continue;
             }
-        }
-        else {
+        } else {
             continue;
         }
     }
