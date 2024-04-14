@@ -17,37 +17,38 @@ bool isOperator(char x) {
     return x == '+' || x == '-' || x == '*' || x == '/' || x == '(' || x == ')';
 }
 
-std::string infx2pstfx(std::string inf) {
+std::string infixToPostfix(std::string inf) {
     std::string postfix;
     Stack<char, 100> stack;
     for (int i = 0; i < inf.length(); i++) {
         if (isdigit(inf[i])) {
-            postfix += inf[i];
+            postfix = postfix + ' ' + inf[i];
         } else if (isOperator(inf[i])) {
             if (inf[i] == '(') {
                 stack.push(inf[i]);
-            } else if (stack.isEmpty() || stack.get() == '(' || priority(inf[i]) > priority(stack.get())) {
+            } else if (stack.isempty()) {
+                stack.push(inf[i]);
+            } else if (stack.get() == '(') {
+                stack.push(inf[i]);
+            } else if (priority(inf[i]) > priority(stack.get())) {
                 stack.push(inf[i]);
             } else if (inf[i] == ')') {
-                while (!stack.isEmpty() && stack.get() != '(') {
-                    postfix += ' ';
-                    postfix += stack.get();
+                while (!stack.isempty() && stack.get() != '(') {
+                    postfix = postfix + ' ' + stack.get();
                     stack.pop();
                 }
                 stack.pop();
             } else {
-                while (!stack.isEmpty() && priority(inf[i]) <= priority(stack.get())) {
-                    postfix += ' ';
-                    postfix += stack.get();
+                while (!stack.isempty()) {
+                    postfix = postfix + ' ' + stack.get();
                     stack.pop();
                 }
                 stack.push(inf[i]);
             }
         }
     }
-    while (!stack.isEmpty()) {
-        postfix += ' ';
-        postfix += stack.get();
+    while (!stack.isempty()) {
+        postfix = postfix + ' ' + stack.get();
         stack.pop();
     }
     return postfix;
