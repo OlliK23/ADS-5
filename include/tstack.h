@@ -16,7 +16,7 @@ public:
 	}
 	void pop() {
 		if (top >= 0) {
-			begin--;
+			top--;
 		}
 	}
 	void push(T s) {
