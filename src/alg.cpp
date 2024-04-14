@@ -1,7 +1,6 @@
 // Copyright 2021 NNTU-CS
 #include <string>
 #include <alg.h>
-#include <map>
 #include "tstack.h"
 int priority(char ch) {
     if (ch == '*' || ch == '/') {
@@ -17,7 +16,7 @@ bool isOperator(char x) {
     return x == '+' || x == '-' || x == '*' || x == '/' || x == '(' || x == ')';
 }
 
-std::string infixToPostfix(std::string inf) {
+std::string infx2pstfx(std::string inf) {
     std::string postfix;
     Stack<char, 100> stack;
     for (int i = 0; i < inf.length(); i++) {
