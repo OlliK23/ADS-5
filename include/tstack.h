@@ -5,31 +5,27 @@
 template <typename T, int size>
 class Stack {
 private:
-	T* arr = nullptr;
-	int top;
+    T* arr = nullptr;
+    int top;
 public:
-	Stack() : top(-1) {
-		arr = new T[size];
+    Stack() : top(-1) {
+	arr = new T[size];
+    }
+    T get() {
+	return arr[top];
+    }
+    void pop() {
+	if (top >= 0) {
+		top--;
 	}
-	T get() {
-		return arr[top];
+    }
+    void push(T s) {
+	if (top < size - 1) {
+		arr[++top] = s;
 	}
-	void pop() {
-		if (top >= 0) {
-			top--;
-		}
-	}
-	void push(T s) {
-		if (top < size - 1) {
-			arr[++top] = s;
-		}
-
-	}
-	bool isEmpty() {
-		if (top == -1) {
-			return true;
-		}
-		return false;
-	}
+    }
+    bool isEmpty() {
+        return top == -1;
+    }
 };
 #endif  // INCLUDE_TSTACK_H_
